@@ -1,0 +1,18 @@
+
+fileprivate struct RectangleColorKey: EnvironmentKey {
+    static let defaultValue: Color = .red
+}
+
+extension EnvironmentValues {
+    var rectangleColor: Color {
+        get { self[RectangleColorKey.self] }
+        set { self[RectangleColorKey.self] = newValue }
+    }
+}
+
+extension View {
+    func rectangleColor(_ color: Color) -> some View {
+        environment(\.rectangleColor, color)
+    }
+}
+
